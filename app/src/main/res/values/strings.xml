@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Todo</string>
+
+    <!-- ToDO list -->
+    <string name="to_do_list_to_do_title">ToDo</string>
+    <string name="to_do_list_done_title">Done</string>
 </resources>
