@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/toDoListFragment"
-        android:name="com.h4kb.todo.ToDoListFragment"
+        android:name="com.h4kb.todo.view.ToDoListFragment"
         android:label="fragment_to_do_list"
         tools:layout="@layout/fragment_to_do_list" />
 </navigation>
