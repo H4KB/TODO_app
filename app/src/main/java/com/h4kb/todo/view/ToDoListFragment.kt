@@ -1,21 +1,33 @@
 package com.h4kb.todo.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.h4kb.todo.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.h4kb.todo.databinding.FragmentToDoListBinding
+import com.h4kb.todo.viewModel.ToDoListViewModel
 
 class ToDoListFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: ToDoListViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
-        return inflater.inflate(R.layout.fragment_to_do_list, container, false)
+        val binding = FragmentToDoListBinding.inflate(inflater, container, false)
+        context ?: return binding.root
+
+        binding.toDoList.layoutManager = LinearLayoutManager(context)
+        val adapter = TaskListAdapter(viewLifecycleOwner)
+        binding.toDoList.adapter = adapter
+        binding.viewModel = viewModel
+
+        viewModel.tasks.observe(viewLifecycleOwner) { tasks ->
+            adapter.submitList(tasks)
+        }
+
+        return binding.root
     }
 }
