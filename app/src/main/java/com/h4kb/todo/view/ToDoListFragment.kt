@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.h4kb.todo.databinding.FragmentToDoListBinding
 import com.h4kb.todo.viewModel.ToDoListViewModel
@@ -19,14 +20,16 @@ class ToDoListFragment : Fragment() {
         val binding = FragmentToDoListBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        binding.toDoList.layoutManager = LinearLayoutManager(context)
-        val adapter = TaskListAdapter(viewLifecycleOwner)
-        binding.toDoList.adapter = adapter
         binding.viewModel = viewModel
+        binding.toDoList.layoutManager = LinearLayoutManager(context)
+        binding.toDoList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        viewModel.tasks.observe(viewLifecycleOwner) { tasks ->
-            adapter.submitList(tasks)
-        }
+        val taskListAdapter = TaskListAdapter(viewLifecycleOwner)
+        binding.toDoList.adapter = taskListAdapter
+
+        viewModel.tasks.observe(viewLifecycleOwner, {
+            taskListAdapter.submitList(it.toMutableList())
+        })
 
         return binding.root
     }
