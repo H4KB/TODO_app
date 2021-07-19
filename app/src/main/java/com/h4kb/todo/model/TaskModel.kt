@@ -2,11 +2,12 @@ package com.h4kb.todo.model
 
 import java.util.*
 
-data class TaskModel(
+class TaskModel(
         val taskType: TaskType,
         val id: Int,
-        val name: String,
+        var name: String,
         val until: Date,
-        val createAt: Date,
-        val updateAt: Date
-)
+) {
+    private val createdAt: Calendar = Calendar.getInstance()
+    val formattedCreateAt = "${createdAt.get(Calendar.YEAR)}/${createdAt.get(Calendar.MONTH)}/${createdAt.get(Calendar.DATE)}"
+}

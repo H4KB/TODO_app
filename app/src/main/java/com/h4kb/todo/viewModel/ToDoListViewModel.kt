@@ -15,9 +15,9 @@ class ToDoListViewModel : ViewModel() {
 
     fun addTask() {
         val cal = Calendar.getInstance()
-        val task = TaskModel(TaskType.TODO, (Math.random() * 10).toInt(), "hello", cal.time, cal.time, cal.time)
+        val task = TaskModel(TaskType.TODO, (Math.random() * 10).toInt(), "hello", cal.time)
 
-        taskRow.add(task.copy())
+        taskRow.add(task)
         _tasks.value = taskRow
     }
 }
