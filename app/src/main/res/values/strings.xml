@@ -4,4 +4,11 @@
     <!-- ToDO list -->
     <string name="to_do_list_to_do_title">ToDo</string>
     <string name="to_do_list_done_title">Done</string>
+
+    <!-- Create task dialog -->
+    <string name="create_task_dialog_title">ToDoを作成する</string>
+    <string name="create_task_dialog_task_name_title">やること</string>
+    <string name="create_task_dialog_task_name_hint">買い物にいく</string>
+    <string name="create_task_dialog_task_until_title">いつまで</string>
+    <string name="create_task_dialog_button_text">作成</string>
 </resources>
