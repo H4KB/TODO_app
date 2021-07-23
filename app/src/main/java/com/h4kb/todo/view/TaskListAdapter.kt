@@ -17,7 +17,6 @@ class TaskListAdapter(private val viewLifeCycleOwner: LifecycleOwner) : ListAdap
     }
 
     override fun onBindViewHolder(holder: TaskListViewHolder, position: Int) {
-        println(position)
         val task = getItem(position)
         if (task != null) {
             holder.bind(task, viewLifeCycleOwner)
