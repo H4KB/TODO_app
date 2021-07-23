@@ -16,4 +16,8 @@ class TaskModel(
         val remainingDays: Int = remainingTime / (24 * 60 * 60)
         return "あと${ remainingDays }日"
     }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
 }
