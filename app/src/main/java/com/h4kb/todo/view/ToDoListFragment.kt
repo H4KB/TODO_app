@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +14,7 @@ import com.h4kb.todo.databinding.FragmentToDoListBinding
 import com.h4kb.todo.viewModel.ToDoListViewModel
 
 class ToDoListFragment : Fragment() {
-    private val viewModel: ToDoListViewModel by viewModels()
+    private val viewModel: ToDoListViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.h4kb.todo.viewModel.ToDoListViewModel" />
@@ -26,30 +24,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/taskNameGroup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
+        <EditText
+            android:id="@+id/editTaskName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/create_task_dialog_task_name_hint"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title">
-
-            <TextView
-                android:id="@+id/taskNameTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_task_dialog_task_name_title" />
-
-            <EditText
-                android:id="@+id/editTaskName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/create_task_dialog_task_name_hint"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/title"/>
 
         <LinearLayout
             android:id="@+id/taskUntilGroup"
@@ -58,20 +42,18 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskNameGroup"
+            app:layout_constraintTop_toBottomOf="@id/editTaskName"
             >
             <TextView
                 android:id="@+id/taskUntil"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_task_dialog_task_until_title" />
             <CalendarView
                 android:id="@+id/calendarView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
-
 
         <Button
             android:id="@+id/createButton"
@@ -80,7 +62,8 @@
             android:text="@string/create_task_dialog_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/taskUntilGroup"/>
+            app:layout_constraintTop_toBottomOf="@+id/taskUntilGroup"
+            android:onClick="@{() -> viewModel.addTask()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
