@@ -61,7 +61,6 @@
             android:id="@+id/bottomAppButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.addTask()}"
             app:srcCompat="@drawable/ic_baseline_add_24"
             app:layout_anchor="@id/bottomAppBar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
