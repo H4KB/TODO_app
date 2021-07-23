@@ -7,7 +7,7 @@ class TaskModel(
         val taskType: TaskType,
         val id: Int,
         var name: String,
-        val until: Calendar,
+        private val deadline: Calendar,
 ) {
     private val createdAt by lazy { Calendar.getInstance() }
     val formattedCreatedAt: String = "${createdAt.get(Calendar.YEAR)}/${createdAt.get(Calendar.MONTH)}/${createdAt.get(Calendar.DATE)}"
@@ -19,11 +19,12 @@ class TaskModel(
     }
 
     fun formattedUntil(): String {
-        println(until)
-        println(Calendar.getInstance())
-        val remainingTime = this.until.compareTo(Calendar.getInstance())
-        println(remainingTime)
-        val remainingDays: Int = remainingTime / (24 * 60 * 60)
+        val now = Calendar.getInstance()
+        now.set(Calendar.HOUR, 0)
+        now.set(Calendar.MINUTE, 0)
+        now.set(Calendar.MILLISECOND, 0)
+        val diff = this.deadline.timeInMillis - now.timeInMillis
+        val remainingDays: Int = (diff / (24 * 60 * 60 * 1000)).toInt()
         return "あと${ remainingDays }日"
     }
 
