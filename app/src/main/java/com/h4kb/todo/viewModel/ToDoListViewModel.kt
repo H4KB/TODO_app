@@ -11,16 +11,6 @@ class ToDoListViewModel : ViewModel() {
     private val _tasks by lazy { MutableLiveData<List<TaskModel>>() }
     val tasks = _tasks
 
-    val isCreateTaskDialogVisible: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
-
-    fun openCreateTaskDialog() {
-        isCreateTaskDialogVisible.value = true;
-    }
-
-    fun closeCreateTaskDialog() {
-        isCreateTaskDialogVisible.value = false
-    }
-
     fun addTask() {
         val cal = Calendar.getInstance()
         val task = TaskModel(TaskType.TODO, (Math.random() * 10).toInt(), "hello", cal)

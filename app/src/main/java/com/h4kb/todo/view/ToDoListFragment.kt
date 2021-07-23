@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.h4kb.todo.databinding.FragmentToDoListBinding
 import com.h4kb.todo.viewModel.ToDoListViewModel
 
@@ -31,6 +32,17 @@ class ToDoListFragment : Fragment() {
             taskListAdapter.submitList(it.toMutableList())
         })
 
+        initBottomSheet(binding)
+
         return binding.root
+    }
+
+    private fun initBottomSheet(binding: FragmentToDoListBinding) {
+        binding.bottomAppButton.setOnClickListener {
+            CreateTaskDialogFragment().show(
+                    childFragmentManager,
+                    ""
+            )
+        }
     }
 }
